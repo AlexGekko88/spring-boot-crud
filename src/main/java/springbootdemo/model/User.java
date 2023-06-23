@@ -13,14 +13,36 @@ public class User {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
+    @Column(name = "sex")
+    private String sex;
+    @Column(name = "age")
+    private String age;
 
     public User() {
     }
 
-    public User(Long id, String firstName, String lastName) {
+    public String getSex() {
+        return sex;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public User(Long id, String firstName, String lastName, String sex, String age) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.sex = sex;
+        this.age = age;
     }
 
     public Long getId() {
@@ -52,11 +74,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName);
+        return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(sex, user.sex) && Objects.equals(age, user.age);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName);
+        return Objects.hash(id, firstName, lastName, sex, age);
     }
 }
